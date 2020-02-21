@@ -28,7 +28,7 @@
 ### 2. 项目新增标签  
 
   因为项目issue状态管理的需要，增加以下标签：  
-  ![avatar](2.png)  
+  ![avatar](2.jpg)  
 
   1)区分优先级的3个标签:low, medium, high  
 
