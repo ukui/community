@@ -1,6 +1,10 @@
-[English](./README.md)&nbsp;&nbsp;[简体中文](./README_zh_CN.md)
+# UKUI Community
 
-# ukui-guide
+English | [简体中文](./README_zh_CN.md)
+
+Welcome to UKUI Community.
+
+## Introduction
 
 In this project, **UKUI** or **ukui** means the UKUI desktop environment.
 
@@ -10,7 +14,7 @@ This project is used to centrally manage the code specifications, documents and 
 
 If you find something that needs improvement, it is necessary to sort the changes by category and then create PRs.
 
-## Co-operation
+## Contributing
 
 UKUI's projects through GitHub do collaborative development, everyone can involves contributing. Your participation will benefits the UKUI desktop environment.
 

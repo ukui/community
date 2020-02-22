@@ -1,6 +1,10 @@
-[English](./README.md)&nbsp;&nbsp;[简体中文](./README_zh_CN.md)
+# UKUI 社区
 
-# ukui-guide
+[English](./README.md) ｜ 简体中文
+
+欢迎来到 UKUI 社区。
+
+# 介绍
 
 在本项目中， **UKUI** 或 **ukui** 指 UKUI 桌面环境。
 
@@ -10,7 +14,7 @@
 
 如果您发现了需要改进的内容，必须按照分类对内容进行修改，然后创建您的 PRs 。
 
-## 合作指导
+## 社区贡献
 
 UKUI 的项目通过 GitHub 进行协作开发，每个人都可以参与到贡献中来。您的参加将会大大改善 UKUI 桌面环境。
 
