@@ -21,7 +21,7 @@ UKUI's projects through GitHub do collaborative development, everyone can involv
 Collaborative specifications mainly describe these specifications:
 
 * [issues report specification]()
-* [issues manage specification](./zh_CN/issue_manage.md)
+* [issues manage specification](./en/issue_manage.md)
 * [commits and PRs specification]()
 
 ## Documentation
