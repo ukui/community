@@ -1,14 +1,22 @@
-这将包括代码提交信息和 PRs 的规范。
-正在完成..
+这将包括代码提交信息和 PRs 的规范：（正在完成..）
 
-*同一项目下，在上一次pr已经被merge后，再次提交pr，且不会重新提交已经被merge的部分的方法：
-1.将自己fork过去的项目删掉，重新fork并在新fork的项目下修改再提交pr。
-2.以ukui-session-manager为例：
-  我本地为https://github.com/ll-eleven/ukui-session-manager.git
-  从https://github.com/ukui/ukui-session-manager.git fork过来的
-  在终端的项目下：
-  git remote add upstream https://github.com/ukui/ukui-session-manager.git
-  git fetch upstream
-  git merge upstream/master
-  git push 
-  即可
+提交PR的原则：
+* 一个PR解决一个问题/添加一个特性;
+* 清晰描述PR的目的;
+* Fork后与上游保持同步;
+
+
+与上游分支保持同步的两种方法：
+1. 简单粗暴：
+将自己fork的项目删掉，重新fork并提交pr。
+
+2. 提交pr前解决冲突,以ukui-session-manager为例：
+```
+# 本地为https://github.com/ll-eleven/ukui-session-manager.git
+# 上游为https://github.com/ukui/ukui-session-manager.git
+git remote add upstream https://github.com/ukui/ukui-session-manager.git
+git fetch upstream
+git merge upstream/master
+# 如有冲突解决冲突
+git push
+```
