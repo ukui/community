@@ -23,6 +23,7 @@ UKUI 的项目通过 GitHub 进行协作开发，每个人都可以参与到贡�
 * [issues 报告规范]()
 * [issues 管理规范](./zh_CN/issue_manage.md)
 * [提交与 PRs 规范](./zh_CN/commit_and_prs.md)
+* [发布规范](./zh_CN/upload_check.md)
 
 ## 文档
 
