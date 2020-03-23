@@ -1,12 +1,12 @@
 # 代码提交与合并
 
-绝大多数的 UKUI 项目使用 git 进行代码管理，使用 github 进行代码的分发与合作开发。为了便于所有人都可以有序的参与 UKUI 的所有项目，我们希望能够约束 UKUI 项目的代码提交记录、冲突合并和 PRs 创建等各种行为。
+绝大多数的 UKUI 项目使用 git 进行代码管理，使用 Github 进行代码的分发与合作开发。为了便于所有人都可以有序的参与 UKUI 的所有项目，我们希望能够约束 UKUI 项目的代码提交记录、冲突合并和 PRs 创建等各种行为。
 
 ## UKUI git 工作流
 
-UKUI 项目使用经典的 GitHub 工作流，这里仅作简单的描述。更为准确的流程定义可以阅览 [Understanding the GitHub flow](https://guides.github.com/introduction/flow/index.html) 。
+UKUI 项目使用经典的 Github 工作流，这里仅作简单的描述。更为准确的流程定义可以阅览 [Understanding the Github flow](https://guides.github.com/introduction/flow/index.html) 。
 
-![GitHub Flow](/static/github-flow.png)
+![Github Flow](/static/github-flow.png)
 
 > Local Commit -> Forked Repository -> Pull Request -> CI/Review -> Mature
 
@@ -92,7 +92,7 @@ See also: #456, #789
 
 同时您的 PR 说明应该符合 PR 信息的规范，只需填写 PR 模板中的信息即可，这个模板目前还在制定当中。
 
-一些 UKUI 项目使用了 GitHub Action 、Travis CI 等构建服务，您可以通过这些服务快速测试自己的代码是否通过构建检查，在创建 PR 时，请检查您的代码是否通过 PR 行为的构建检查。
+一些 UKUI 项目使用了 Github Action 、Travis CI 等构建服务，您可以通过这些服务快速测试自己的代码是否通过构建检查，在创建 PR 时，请检查您的代码是否通过 PR 行为的构建检查。
 
 ## 一个例子
 
@@ -100,7 +100,7 @@ See also: #456, #789
 
 ### Fork 上游仓库
 
-简单的点击 github 的 frok 按钮，然后克隆到本地，并添加上游仓库地址。
+简单的点击 Github 的 frok 按钮，然后克隆到本地，并添加上游仓库地址。
 
 ```sh
 git clone https://github.com/YOUR-GITHUB-USERNAME/ukui-session-manager.git
@@ -144,4 +144,4 @@ git remote add origin https://github.com/YOUR-GITHUB-USERNAME/ukui-session-manag
 git push -u origin feature-test
 ```
 
-在您的 github 仓库界面点击 `create pull request` 按钮，选择需要合并的分支，填写 PR 信息完成创建。
+在您的 Github 仓库界面点击 `create pull request` 按钮，选择需要合并的分支，填写 PR 信息完成创建。
