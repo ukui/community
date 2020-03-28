@@ -24,9 +24,9 @@ QUILT_PATCH_OPTS="--reject-format=unified"
 QUILT_COLORS="diff_hdr=1;32:diff_add=1;34:diff_rem=1;31:diff_hunk=1;33:diff_ctx=35:diff_cctx=33"
 ```
 
-#### 环境变量
+#### 环境变量（可选）
 
-需要在环境变量指定 quilt 的补丁目录及参数
+或者，可以选择在 shell 在设定 quilt 的补丁目录及参数为环境变量。
 
 ```bash
 export QUILT_PATCHES=debian/patches
