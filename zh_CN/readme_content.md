@@ -4,7 +4,17 @@
 
 UKUI README 标准将通过使本文符合 UKUI README 文档标准，用以介绍 README 规范的详细指导。
 
-[TOC]
+## Table of Contents
+
+   * [README 文档标准](#readme-文档标准)
+      * [项目背景](#项目背景)
+      * [开始 (Getting Strated)](#开始-getting-strated)
+      * [文档说明 (Document / Introduction)](#文档说明-document--introduction)
+      * [贡献指南 （可选）](#贡献指南-可选)
+      * [已知问题（可选）](#已知问题可选)
+      * [Q&amp;A （可选）](#qa-可选)
+      * [TODO list (可选)](#todo-list-可选)
+
 
 ## 项目背景
 
