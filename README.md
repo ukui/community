@@ -34,7 +34,7 @@ This section now in TODO.
 
 This project recommends good practices so that real-world UKUI developers can write code be maintained by other real-world UKUI developers. A style guide that reflects real-world usage gets used, and a style guide that holds to an ideal that has been rejected by the people it is supposed to help risks not getting used at all — no matter how good it is.
 
-The UKUI code style is separated into several sections of related rules, you can checkout content in [code style guide]().
+The UKUI code style is separated into several sections of related rules, you can checkout content in [qt_coding_style](./en/qt_coding_style.md).
 
 ## Licensing
 
