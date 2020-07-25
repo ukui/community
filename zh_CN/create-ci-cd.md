@@ -1,6 +1,6 @@
 # CI/CD 规范
 
-在软件开发中经常会提到 持续集成(Continuous Integration)（CI）和 持续交付(Continuous Delivery)（CD）这两件事务。由于 UKUI 事实上是出于软件分发的上游，为了解决一下需求我们引入了 CI/CD 来为开发者提供便捷。
+在软件开发中经常会提到 持续集成(Continuous Integration)（CI）和 持续交付(Continuous Delivery)（CD）这两件事务。由于 UKUI 事实上是出于软件分发的上游，为了解决以下需求我们引入了 CI/CD 来为开发者提供便捷。
 
 * 频繁发布
 * 自动化流程
