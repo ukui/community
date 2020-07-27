@@ -1,5 +1,29 @@
+## 新包入库检查
+1. 程序可以正常编译和运行
+2. 配置好debian目录下各文件(Todo: #debian文件初始化配置)
+3. 配置好主目录下各文件(README.md, COPYING, CHNAGELOG, AUTHORS, NEWS)
+4. 给所有代码文件(.c/.cpp/.h/.py等)头部添加相应copyright头(Todo: #常见copyright头)
+5. 通过命令"cme update dpkg-copyright"更新debian/copyright文件，确保所有文件的copyright与debian/copyright里的条目是一一对应的
+   ```
+   // 主题命令的输出，有的文件可能有问题，需要手动修复，比如：
+   Adding dummy global license text for license GPL for path panel/customstyle.cpp panel/customstyle.h
+   Warning in 'License:GPL text': License contains copyright scanner boilerplate. Please update this field with the actual license text (this cannot be fixed with 'cme fix' command)
+   Offending value: 'Please fill license GPL from header of panel/customstyle.cpp panel/customstyle.h'
+   
+   // 并且生成格式有问题(Copyright:后面多了一个LGPL2+)，需要手动修改下，比如：
+   Files: panel/common/ukuiscreensaver.h
+   Copyright: LGPL2+ / 2019-2020, UKUI team / 2016, Luís Pereira <luis.artur.pereira@gmail.com> / 2010-2011, Razor team
+   License: LGPL-2.1+
+   需要修改成：
+   Files: panel/common/ukuiscreensaver.h
+   Copyright: 2019-2020, UKUI team
+              2016, Luís Pereira <luis.artur.pereira@gmail.com>
+              2010-2011, Razor team
+   License: LGPL-2.1+
+   ```
+
 ## 每个软件包在release前，需要做好以下检查：
-1. 纯净环境下是否编译通过:
+1. 纯净环境下是否编译通过(后续全部通过CI配置):
 [pbuilder](pbuilder.md) 或者 sbuild
 
 2. lintian检查是否通过: 
@@ -17,6 +41,7 @@ lintian -i -EvIL +pedantic --verbose foo-version.amd64.changes
 * 每个文件的copyright与debian/copyright要一一对应
 * 可以通过`licensecheck -r .`查看头部有声明的文件的copyright.
 
+## 附录
 ### 常见lintian错误和解决办法
 
 #### sciprt-without-interpreter
