@@ -2,7 +2,7 @@
 1. 程序可以正常编译和运行
 2. 配置好debian目录下各文件(Todo: #debian文件初始化配置)
 3. 配置好主目录下各文件(README.md, COPYING, CHNAGELOG, AUTHORS, NEWS)
-4. 给所有代码文件(.c/.cpp/.h/.py等)头部添加相应copyright头(Todo: #常见copyright头)
+4. 给所有代码文件(.c/.cpp/.h/.py等)头部添加相应copyright头[常见copyright头](#常见copyright头)
 5. 通过命令`cme update dpkg-copyright`[<sup>1</sup>](#参考)更新debian/copyright文件，确保所有文件的copyright与debian/copyright里的条目是一一对应的
    ```
    // 主题命令的输出，有的文件可能有问题，需要手动修复，比如：
