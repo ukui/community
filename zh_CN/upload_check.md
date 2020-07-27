@@ -19,6 +19,7 @@ lintian -i -EvIL +pedantic --verbose foo-version.amd64.changes
 
 ### 常见lintian错误和解决办法
 
+#### sciprt-without-interpreter
 ```
 E: ukui-panel: script-without-interpreter control/postinst
 N: 
@@ -30,7 +31,7 @@ N:
 N:    Check: scripts
 ```
 
-解决方法：在postinst添加解释头，最好同时加上"set -e"
+解决方法：在control/*.postinst添加解释头，最好同时加上"set -e"
 ```
 + #!/bin/sh
 
@@ -39,6 +40,7 @@ N:    Check: scripts
 glib-compile-schemas /usr/share/glib-2.0/schemas/ 
 ```
 
+#### maintainer-script-lacks-debhelper-token
 ```
 W: ukui-panel source: maintainer-script-lacks-debhelper-token debian/ukui-panel.postinst
 N: 
@@ -52,15 +54,18 @@ N:    Severity: warning
 N:    
 N:    Check: debhelper
 ```
-解决方式：添加#DEBHELPER#
+解决方法：debian/ukui-panel.postinst添加#DEBHELPER#
 ```
-+ #!/bin/sh
+#!/bin/sh
+
+set -e
 
 glib-compile-schemas /usr/share/glib-2.0/schemas/ 
 
 + #DEBHELPER#
 ```
 
+#### file-without-copyright-information
 ```
 W: ukui-panel source: file-without-copyright-information .github/workflows/build.yml
 N: 
@@ -76,7 +81,7 @@ N:    Severity: warning
 N:    
 N:    Check: debian/copyright
 ```
-解决方式：在debian/copyright里按此文件的开源协议，添加到对应的条目中
+解决方法：在debian/copyright里按此文件的开源协议，添加到对应的条目中
 ```
 // 假如“.github/workflows/build.yml”的copyright与“panel/comm_func.*”文件一样，是“2020 KylinSoft Co., Ltd.“
 Files: panel/comm_func.*
@@ -89,6 +94,7 @@ Copyright: 2020 KylinSoft Co., Ltd.
 License: LGPL-2.1+
 ```
 
+#### spelling-error-in-binary
 ```
 I: ukui-panel: spelling-error-in-binary usr/bin/ukui-panel deleteed deleted
 N: 
@@ -113,4 +119,4 @@ N:    Severity: info
 N:    
 N:    Check: binaries
 ```
-解决方式：有拼写错误，通过”grep -rw <word> ."搜索到错误字符后，修正
+解决方法：有拼写错误，通过”grep -rw <word> ."搜索到错误字符后，修正
