@@ -1,4 +1,4 @@
-每个软件包在release前，需要做好以下检查：
+## 每个软件包在release前，需要做好以下检查：
 1. 纯净环境下是否编译通过:
 [pbuilder](pbuilder.md) 或者 sbuild
 
@@ -7,7 +7,7 @@
 可以在pdebuild、debuild时自动调用，详见相关说明文件。
 
 * 手动处理
-debuild、pdebuild编包后会生成foo-version.amd64.changes文件,对其运行lintian, 解决全部报告的"E"和"W",其他的标注尽量解决([常见lintian错误和解决方法](#常见lintian错误和解决办法):
+debuild、pdebuild编包后会生成foo-version.amd64.changes文件,对其运行lintian, 解决全部报告的"E"和"W",其他的标注尽量解决([常见lintian错误和解决方法](#常见lintian错误和解决办法)):
 ```
 lintian -i -EvIL +pedantic --verbose foo-version.amd64.changes
 ```
@@ -19,6 +19,7 @@ lintian -i -EvIL +pedantic --verbose foo-version.amd64.changes
 
 ### 常见lintian错误和解决办法
 
+```
 E: ukui-panel: script-without-interpreter control/postinst
 N: 
 N:    This file starts with the #! sequence that identifies scripts, but it
@@ -27,6 +28,7 @@ N:
 N:    Severity: error
 N:    
 N:    Check: scripts
+```
 
 解决方法：在postinst添加解释头，最好同时加上"set -e"
 ```
@@ -37,6 +39,7 @@ N:    Check: scripts
 glib-compile-schemas /usr/share/glib-2.0/schemas/ 
 ```
 
+```
 W: ukui-panel source: maintainer-script-lacks-debhelper-token debian/ukui-panel.postinst
 N: 
 N:    This package is built using debhelper commands that may modify
@@ -48,7 +51,7 @@ N:
 N:    Severity: warning
 N:    
 N:    Check: debhelper
-
+```
 解决方式：添加#DEBHELPER#
 ```
 + #!/bin/sh
@@ -58,6 +61,7 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/
 + #DEBHELPER#
 ```
 
+```
 W: ukui-panel source: file-without-copyright-information .github/workflows/build.yml
 N: 
 N:    The source tree contains a file which was not matched by any of the
@@ -71,10 +75,10 @@ N:
 N:    Severity: warning
 N:    
 N:    Check: debian/copyright
-
+```
 解决方式：在debian/copyright里按此文件的开源协议，添加到对应的条目中
 ```
-// 假如“.github/workflows/build.yml”的copyright与“panel/comm_func.*”文件一样，是“2020 KylinSoft Co., Ltd.
+// 假如“.github/workflows/build.yml”的copyright与“panel/comm_func.*”文件一样，是“2020 KylinSoft Co., Ltd.“
 Files: panel/comm_func.*
        panel/iukuipanel.*
        panel/iukuipanelplugin.h
@@ -84,3 +88,29 @@ Files: panel/comm_func.*
 Copyright: 2020 KylinSoft Co., Ltd.
 License: LGPL-2.1+
 ```
+
+```
+I: ukui-panel: spelling-error-in-binary usr/bin/ukui-panel deleteed deleted
+N: 
+N:    Lintian found a spelling error in the given binary. Lintian has a list
+N:    of common misspellings that it looks for. It does not have a dictionary
+N:    like a spelling checker does.
+N:    
+N:    If the string containing the spelling error is translated with the help
+N:    of gettext or a similar tool, please fix the error in the translations
+N:    as well as the English text to avoid making the translations fuzzy. With
+N:    gettext, for example, this means you should also fix the spelling
+N:    mistake in the corresponding msgids in the *.po files.
+N:    
+N:    You can often find the word in the source code by running:
+N:    
+N:     grep -rw <word> <source-tree>
+N:    
+N:    This tag may produce false positives for words that contain non-ASCII
+N:    characters due to limitations in strings.
+N:    
+N:    Severity: info
+N:    
+N:    Check: binaries
+```
+解决方式：有拼写错误，通过”grep -rw <word> ."搜索到错误字符后，修正
