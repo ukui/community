@@ -3,7 +3,7 @@
 2. 配置好debian目录下各文件(Todo: #debian文件初始化配置)
 3. 配置好主目录下各文件(README.md, COPYING, CHNAGELOG, AUTHORS, NEWS)
 4. 给所有代码文件(.c/.cpp/.h/.py等)头部添加相应copyright头(Todo: #常见copyright头)
-5. 通过命令"cme update dpkg-copyright"更新debian/copyright文件，确保所有文件的copyright与debian/copyright里的条目是一一对应的
+5. 通过命令`cme update dpkg-copyright`[<sup>1</sup>](#参考)更新debian/copyright文件，确保所有文件的copyright与debian/copyright里的条目是一一对应的
    ```
    // 主题命令的输出，有的文件可能有问题，需要手动修复，比如：
    Adding dummy global license text for license GPL for path panel/customstyle.cpp panel/customstyle.h
@@ -37,9 +37,8 @@ lintian -i -EvIL +pedantic --verbose foo-version.amd64.changes
 ```
 
 3. copyright是否正确以及匹配
-* .cpp .c .h .py等代码文件，需要在文件头部有相应的copyright声明
-* 每个文件的copyright与debian/copyright要一一对应
-* 可以通过`licensecheck -r .`查看头部有声明的文件的copyright.
+* 总体原则是“.cpp .c .h .py”等代码文件，需要在文件头部有相应的copyright声明并且与debian/copyright要一一对应
+* 可以通过`cme update dpkg-copyright`更新debian/copyright文件，注意事项见#新包入库检查
 
 ## 附录
 ### 常见lintian错误和解决办法
@@ -145,3 +144,6 @@ N:
 N:    Check: binaries
 ```
 解决方法：有拼写错误，通过”grep -rw <word> ."搜索到错误字符后，修正
+   
+## 参考
+- [1] [Debian Copyright Review Tools](https://wiki.debian.org/CopyrightReviewTools)
