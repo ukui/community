@@ -7,7 +7,7 @@
 可以在pdebuild、debuild时自动调用，详见相关说明文件。
 
 * 手动处理
-debuild、pdebuild编包后会生成foo-version.amd64.changes文件,对其运行lintian, 解决全部报告的"E"和"W",其他的标注尽量解决(常见lintian错误和解决方法):
+debuild、pdebuild编包后会生成foo-version.amd64.changes文件,对其运行lintian, 解决全部报告的"E"和"W",其他的标注尽量解决([常见lintian错误和解决方法](#常见lintian错误和解决办法):
 ```
 lintian -i -EvIL +pedantic --verbose foo-version.amd64.changes
 ```
@@ -16,3 +16,71 @@ lintian -i -EvIL +pedantic --verbose foo-version.amd64.changes
 * .cpp .c .h .py等代码文件，需要在文件头部有相应的copyright声明
 * 每个文件的copyright与debian/copyright要一一对应
 * 可以通过`licensecheck -r .`查看头部有声明的文件的copyright.
+
+### 常见lintian错误和解决办法
+
+E: ukui-panel: script-without-interpreter control/postinst
+N: 
+N:    This file starts with the #! sequence that identifies scripts, but it
+N:    does not name an interpreter.
+N:    
+N:    Severity: error
+N:    
+N:    Check: scripts
+
+解决方法：在postinst添加解释头，最好同时加上"set -e"
+```
++ #!/bin/sh
+
++ set -e
+
+glib-compile-schemas /usr/share/glib-2.0/schemas/ 
+```
+
+W: ukui-panel source: maintainer-script-lacks-debhelper-token debian/ukui-panel.postinst
+N: 
+N:    This package is built using debhelper commands that may modify
+N:    maintainer scripts, but the maintainer scripts do not contain the
+N:    "#DEBHELPER#" token debhelper uses to modify them.
+N:    
+N:    Adding the token to the scripts is recommended.
+N:    
+N:    Severity: warning
+N:    
+N:    Check: debhelper
+
+解决方式：添加#DEBHELPER#
+```
++ #!/bin/sh
+
+glib-compile-schemas /usr/share/glib-2.0/schemas/ 
+
++ #DEBHELPER#
+```
+
+W: ukui-panel source: file-without-copyright-information .github/workflows/build.yml
+N: 
+N:    The source tree contains a file which was not matched by any of the
+N:    Files paragraphs in debian/copyright. Either adjust existing wildcards
+N:    to match that file or add a new Files paragraph.
+N:    
+N:    Refer to
+N:    https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/ for
+N:    details.
+N:    
+N:    Severity: warning
+N:    
+N:    Check: debian/copyright
+
+解决方式：在debian/copyright里按此文件的开源协议，添加到对应的条目中
+```
+// 假如“.github/workflows/build.yml”的copyright与“panel/comm_func.*”文件一样，是“2020 KylinSoft Co., Ltd.
+Files: panel/comm_func.*
+       panel/iukuipanel.*
+       panel/iukuipanelplugin.h
+       panel/main.cpp
+       panel/panelpluginsmodel.
++      .github/workflows/build.yml
+Copyright: 2020 KylinSoft Co., Ltd.
+License: LGPL-2.1+
+```
