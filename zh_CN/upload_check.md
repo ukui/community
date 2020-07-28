@@ -2,8 +2,40 @@
 1. 程序可以正常编译和运行
 2. 配置好debian目录下各文件(Todo: #debian文件初始化配置)
 3. 配置好主目录下各文件(README.md, COPYING, CHNAGELOG, AUTHORS, NEWS)
-4. 给所有代码文件(.c/.cpp/.h/.py等)头部添加相应copyright头([常见copyright头](#常见copyright头))
-5. 通过命令`cme update dpkg-copyright`[<sup>1</sup>](#参考)更新debian/copyright文件，确保所有文件的copyright与debian/copyright里的条目是一一对应的
+4. 源码Copyright处理
+   * 如果是新建的文件：给所有代码文件(.c/.cpp/.h/.py等)头部添加相应copyright头([常见copyright头](#常见copyright头))
+   * 如果修改已有的文件(示例如下)：
+     - 原有的copyright不变，在copyright头部的添加麒麟软件的copyright
+     - 如果原来写了”Authors: xxxx", 则添加一行“Modified by: xxx"
+   ```
+    /* 
+     *
+     * Copyright: 2010-2011 Razor team
+   + *            2020 KylinSoft Co., Ltd.
+     * Authors:
+     *   Alexander Sokoloff <sokoloff.a@gmail.com>
+   + * Modified by:
+   + *   hansome_feng <jianfengli@ubuntukylin.com>
+     *
+     * This program or library is free software; you can redistribute it
+     * and/or modify it under the terms of the GNU Lesser General Public
+     * License as published by the Free Software Foundation; either
+     * version 2.1 of the License, or (at your option) any later version.
+     *
+     * This library is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+     * Lesser General Public License for more details.
+     *
+     * You should have received a copy of the GNU Lesser General
+     * Public License along with this library; if not, write to the
+     * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+     * Boston, MA 02110-1301 USA
+     *
+     */
+   ```
+   
+5. debian/copyright处理：通过命令`cme update dpkg-copyright`[<sup>1</sup>](#参考)更新debian/copyright文件，确保所有文件的copyright与debian/copyright里的条目是一一对应的
    ```
    // 主题命令的输出，有的文件可能有问题，需要手动修复，比如：
    Adding dummy global license text for license GPL for path panel/customstyle.cpp panel/customstyle.h
@@ -226,7 +258,7 @@ N:    Severity: info
 N:    
 N:    Check: binaries
 ```
-解决方法：有拼写错误，通过”grep -rw <word> ."搜索到错误字符后，修正
+解决方法：有拼写错误，通过`grep -rw <word> .`搜索到错误字符后，修正
    
 ## 参考
 - [1] [Debian Copyright Review Tools](https://wiki.debian.org/CopyrightReviewTools)
