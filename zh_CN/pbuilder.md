@@ -4,7 +4,7 @@ title: Pbuilder
 
 ### Install
 
-sudo apt install pbuilder qemu-user-static
+sudo apt install pbuilder qemu-user-static fakeroot debian-archive-keyring
 
 ### Setup
 
@@ -113,7 +113,7 @@ Change the lintian segments from:
 
 to
 
-`su -C "lintian -i -EvIL +pedantic --verbose "$BUILDDIR"/*.changes" - pbuilder`
+`su -c "lintian -i -EvIL +pedantic --verbose "$BUILDDIR"/*.changes" - pbuilder`
 
 - Then tell pbuilder to user the hooks in that directory:
 
