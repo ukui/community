@@ -109,7 +109,7 @@ cp /usr/share/doc/pbuilder/examples/B90lintian ~/pbuilderhooks
 
 Change the lintian segments from:
 
-`su -C "lintian -I --show-overrides "$BUILDDIR"/.change; - pbuilder`
+`su -c "lintian -I --show-overrides "$BUILDDIR"/.change; - pbuilder`
 
 to
 
